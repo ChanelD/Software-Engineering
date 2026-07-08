@@ -1,0 +1,45 @@
+[
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryItem",
+        "importPath": "schemas",
+        "description": "schemas",
+        "isExtraImport": true,
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "get_inventory",
+        "kind": 2,
+        "importPath": "inventory",
+        "description": "inventory",
+        "peekOfCode": "def get_inventory():\n    return {\"message\": \"Inventory endpoint is working\"}\n@router.post(\"/\")\ndef create_item(item: InventoryItem):\n    # This will now accept data in the format you defined in schemas.py\n    return {\"message\": f\"Successfully added {item.name} to the inventory\", \"data\": item}",
+        "detail": "inventory",
+        "documentation": {}
+    },
+    {
+        "label": "create_item",
+        "kind": 2,
+        "importPath": "inventory",
+        "description": "inventory",
+        "peekOfCode": "def create_item(item: InventoryItem):\n    # This will now accept data in the format you defined in schemas.py\n    return {\"message\": f\"Successfully added {item.name} to the inventory\", \"data\": item}",
+        "detail": "inventory",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "inventory",
+        "description": "inventory",
+        "peekOfCode": "router = APIRouter(prefix=\"/inventory\", tags=[\"inventory\"])\n@router.get(\"/\")\ndef get_inventory():\n    return {\"message\": \"Inventory endpoint is working\"}\n@router.post(\"/\")\ndef create_item(item: InventoryItem):\n    # This will now accept data in the format you defined in schemas.py\n    return {\"message\": f\"Successfully added {item.name} to the inventory\", \"data\": item}",
+        "detail": "inventory",
+        "documentation": {}
+    }
+]
