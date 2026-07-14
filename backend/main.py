@@ -1,22 +1,15 @@
 from fastapi import FastAPI
-from inventory import router as inventory_router
-from purchases import router as purchases_router
-from expiration import router as expiration_router
-from sales import router as sales_router
-from alerts import router as alerts_router
-from dashboard import router as dashboard_router
-from services import router as services_router
+from database import engine, Base
+import models
+from routers import inventory, purchases, expiration
 
-app = FastAPI()
+# 1. This command creates the database file and the tables. 
+# Make sure this line starts at the very beginning of the line (no indentation).
+Base.metadata.create_all(bind=engine)
 
-app.include_router(inventory_router)
-app.include_router(purchases_router)
-app.include_router(expiration_router)
-app.include_router(sales_router)
-app.include_router(alerts_router)
-app.include_router(dashboard_router)
-app.include_router(services_router)
+app = FastAPI(title="Inventory Management API")
 
-@app.get("/")
-def root():
-    return {"message": "Sleepless N' Caffeinated Backend is online"}
+# Register your routers
+app.include_router(inventory.router, prefix="/inventory", tags=["inventory"])
+app.include_router(purchases.router, prefix="/purchases", tags=["purchases"])
+app.include_router(expiration.router, prefix="/expiration", tags=["expiration"])

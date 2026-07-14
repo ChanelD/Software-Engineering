@@ -1,0 +1,551 @@
+[
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "models,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "models.",
+        "description": "models.",
+        "detail": "models.",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "models",
+        "description": "models",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "schemas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "schemas",
+        "description": "schemas",
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Float",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Date",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "inventory",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
+        "documentation": {}
+    },
+    {
+        "label": "purchases",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
+        "documentation": {}
+    },
+    {
+        "label": "expiration",
+        "importPath": "routers",
+        "description": "routers",
+        "isExtraImport": true,
+        "detail": "routers",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "routers.expiration",
+        "description": "routers.expiration",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@router.get(\"/\")\ndef get_expiring_items(db: Session = Depends(get_db)):\n    # Query items that have an expiration date\n    # You can customize this to only show items within X days if you want",
+        "detail": "routers.expiration",
+        "documentation": {}
+    },
+    {
+        "label": "get_expiring_items",
+        "kind": 2,
+        "importPath": "routers.expiration",
+        "description": "routers.expiration",
+        "peekOfCode": "def get_expiring_items(db: Session = Depends(get_db)):\n    # Query items that have an expiration date\n    # You can customize this to only show items within X days if you want\n    return db.query(models.InventoryItem).filter(models.InventoryItem.expiration_date != None).all()",
+        "detail": "routers.expiration",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routers.expiration",
+        "description": "routers.expiration",
+        "peekOfCode": "router = APIRouter()\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@router.get(\"/\")\ndef get_expiring_items(db: Session = Depends(get_db)):\n    # Query items that have an expiration date",
+        "detail": "routers.expiration",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "routers.inventory",
+        "description": "routers.inventory",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@router.post(\"/\", response_model=schemas.Inventory)\ndef create_item(item: schemas.InventoryCreate, db: Session = Depends(get_db)):\n    new_item = models.InventoryItem(**item.model_dump())\n    db.add(new_item)",
+        "detail": "routers.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "create_item",
+        "kind": 2,
+        "importPath": "routers.inventory",
+        "description": "routers.inventory",
+        "peekOfCode": "def create_item(item: schemas.InventoryCreate, db: Session = Depends(get_db)):\n    new_item = models.InventoryItem(**item.model_dump())\n    db.add(new_item)\n    db.commit()\n    db.refresh(new_item)\n    return new_item\n@router.get(\"/\", response_model=list[schemas.Inventory])\ndef get_items(db: Session = Depends(get_db)):\n    return db.query(models.InventoryItem).all()\n@router.put(\"/{item_id}\")",
+        "detail": "routers.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "get_items",
+        "kind": 2,
+        "importPath": "routers.inventory",
+        "description": "routers.inventory",
+        "peekOfCode": "def get_items(db: Session = Depends(get_db)):\n    return db.query(models.InventoryItem).all()\n@router.put(\"/{item_id}\")\ndef update_item(item_id: int, item_update: schemas.InventoryUpdate, db: Session = Depends(get_db)):\n    item = db.query(models.InventoryItem).filter(models.InventoryItem.item_id == item_id).first()\n    if not item:\n        raise HTTPException(status_code=404, detail=\"Item not found\")\n    update_data = item_update.model_dump(exclude_unset=True)\n    for key, value in update_data.items():\n        setattr(item, key, value)",
+        "detail": "routers.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "update_item",
+        "kind": 2,
+        "importPath": "routers.inventory",
+        "description": "routers.inventory",
+        "peekOfCode": "def update_item(item_id: int, item_update: schemas.InventoryUpdate, db: Session = Depends(get_db)):\n    item = db.query(models.InventoryItem).filter(models.InventoryItem.item_id == item_id).first()\n    if not item:\n        raise HTTPException(status_code=404, detail=\"Item not found\")\n    update_data = item_update.model_dump(exclude_unset=True)\n    for key, value in update_data.items():\n        setattr(item, key, value)\n    db.commit()\n    db.refresh(item)\n    return {\"message\": \"Item updated successfully\", \"item\": item}",
+        "detail": "routers.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routers.inventory",
+        "description": "routers.inventory",
+        "peekOfCode": "router = APIRouter()\n# Dependency to provide the database session\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@router.post(\"/\", response_model=schemas.Inventory)\ndef create_item(item: schemas.InventoryCreate, db: Session = Depends(get_db)):",
+        "detail": "routers.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "routers.purchases",
+        "description": "routers.purchases",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@router.post(\"/\")\ndef make_purchase(purchase: schemas.PurchaseCreate, db: Session = Depends(get_db)):\n    item = db.query(models.InventoryItem).filter(models.InventoryItem.item_id == purchase.item_id).first()\n    if not item:",
+        "detail": "routers.purchases",
+        "documentation": {}
+    },
+    {
+        "label": "make_purchase",
+        "kind": 2,
+        "importPath": "routers.purchases",
+        "description": "routers.purchases",
+        "peekOfCode": "def make_purchase(purchase: schemas.PurchaseCreate, db: Session = Depends(get_db)):\n    item = db.query(models.InventoryItem).filter(models.InventoryItem.item_id == purchase.item_id).first()\n    if not item:\n        raise HTTPException(status_code=404, detail=\"Item not found\")\n    item.quantity += purchase.quantity_bought\n    new_transaction = models.Transaction(\n        item_id=purchase.item_id,\n        transaction_type=\"PURCHASE\",\n        quantity_changed=purchase.quantity_bought,\n        timestamp=purchase.timestamp",
+        "detail": "routers.purchases",
+        "documentation": {}
+    },
+    {
+        "label": "get_purchases",
+        "kind": 2,
+        "importPath": "routers.purchases",
+        "description": "routers.purchases",
+        "peekOfCode": "def get_purchases(db: Session = Depends(get_db)):\n    return db.query(models.Transaction).all()",
+        "detail": "routers.purchases",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routers.purchases",
+        "description": "routers.purchases",
+        "peekOfCode": "router = APIRouter()\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@router.post(\"/\")\ndef make_purchase(purchase: schemas.PurchaseCreate, db: Session = Depends(get_db)):\n    item = db.query(models.InventoryItem).filter(models.InventoryItem.item_id == purchase.item_id).first()",
+        "detail": "routers.purchases",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SQLALCHEMY_DATABASE_URL",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "SQLALCHEMY_DATABASE_URL = os.getenv(\"DATABASE_URL\")\n# Create the SQLAlchemy engine\nengine = create_engine(SQLALCHEMY_DATABASE_URL)\n# Create a configured \"Session\" class\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Create a Base class for our models\nBase = declarative_base()\n# Dependency to get a database session in your routes\ndef get_db():\n    db = SessionLocal()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "engine = create_engine(SQLALCHEMY_DATABASE_URL)\n# Create a configured \"Session\" class\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Create a Base class for our models\nBase = declarative_base()\n# Dependency to get a database session in your routes\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Create a Base class for our models\nBase = declarative_base()\n# Dependency to get a database session in your routes\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "Base = declarative_base()\n# Dependency to get a database session in your routes\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI(title=\"Inventory Management API\")\n# Register your routers\napp.include_router(inventory.router, prefix=\"/inventory\", tags=[\"inventory\"])\napp.include_router(purchases.router, prefix=\"/purchases\", tags=[\"purchases\"])\napp.include_router(expiration.router, prefix=\"/expiration\", tags=[\"expiration\"])",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryItem",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class InventoryItem(Base):\n    __tablename__ = \"inventory\"\n    # Updated to match the 'item_id' Primary Key in your diagram\n    item_id = Column(Integer, primary_key=True, index=True)\n    # Updated to match the 'name' column in your diagram\n    name = Column(String, index=True) \n    category = Column(String, nullable=True)\n    quantity = Column(Integer, default=0)\n    low_stock_threshold = Column(Integer, default=0)\n    expiration_date = Column(Date, nullable=True)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Transaction",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Transaction(Base):\n    __tablename__ = \"transactions\"\n    id = Column(Integer, primary_key=True, index=True)\n    # Linked to inventory.item_id as shown in your diagram\n    item_id = Column(Integer, ForeignKey(\"inventory.item_id\")) \n    transaction_type = Column(String) \n    quantity_changed = Column(Integer)\n    timestamp = Column(String)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryBase",
+        "kind": 6,
+        "importPath": "schemas",
+        "description": "schemas",
+        "peekOfCode": "class InventoryBase(BaseModel):\n    name: str\n    quantity: int = 0\n    category: Optional[str] = None\n    low_stock_threshold: int = 0\n    expiration_date: Optional[date] = None\nclass InventoryCreate(InventoryBase):\n    pass\nclass Inventory(InventoryBase):\n    item_id: int",
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryCreate",
+        "kind": 6,
+        "importPath": "schemas",
+        "description": "schemas",
+        "peekOfCode": "class InventoryCreate(InventoryBase):\n    pass\nclass Inventory(InventoryBase):\n    item_id: int\n    class Config:\n        from_attributes = True\nclass InventoryUpdate(BaseModel):\n    name: Optional[str] = None\n    quantity: Optional[int] = None\n    category: Optional[str] = None",
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Inventory",
+        "kind": 6,
+        "importPath": "schemas",
+        "description": "schemas",
+        "peekOfCode": "class Inventory(InventoryBase):\n    item_id: int\n    class Config:\n        from_attributes = True\nclass InventoryUpdate(BaseModel):\n    name: Optional[str] = None\n    quantity: Optional[int] = None\n    category: Optional[str] = None\n    low_stock_threshold: Optional[int] = None\n    expiration_date: Optional[date] = None",
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryUpdate",
+        "kind": 6,
+        "importPath": "schemas",
+        "description": "schemas",
+        "peekOfCode": "class InventoryUpdate(BaseModel):\n    name: Optional[str] = None\n    quantity: Optional[int] = None\n    category: Optional[str] = None\n    low_stock_threshold: Optional[int] = None\n    expiration_date: Optional[date] = None\n# New schema for purchases\nclass PurchaseCreate(BaseModel):\n    item_id: int\n    quantity_bought: int",
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "PurchaseCreate",
+        "kind": 6,
+        "importPath": "schemas",
+        "description": "schemas",
+        "peekOfCode": "class PurchaseCreate(BaseModel):\n    item_id: int\n    quantity_bought: int\n    timestamp: datetime = None",
+        "detail": "schemas",
+        "documentation": {}
+    }
+]
