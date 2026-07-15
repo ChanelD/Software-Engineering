@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="header">
-        <h1>Inventory System</h1>
+        <h1>Sleepless N' Cafeinated Inventory</h1>
       </div>
 
       <div className="layout">
@@ -39,9 +39,6 @@ function App() {
         </div>
       </div>
 
-      <div className="footer">
-        <p>Footer</p>
-      </div>
     </BrowserRouter>
   );
 }

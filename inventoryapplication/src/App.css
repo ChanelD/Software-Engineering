@@ -1,5 +1,5 @@
 .header {
-  background-color: #333;
+  background-color: #432f15;
   color: white;
   padding: 15px;
   text-align: center;
@@ -7,7 +7,7 @@
 
 .layout {
   display: flex;
-  min-height: 80vh;
+  min-height: 100vh;
 }
 
 .sidenav {
@@ -15,7 +15,7 @@
   background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 0;
 }
 
 .sidenav a {
@@ -25,6 +25,10 @@
   font-size: 16px;
 }
 
+.sidenav a:first-child {
+  padding-top: 10px;
+}
+
 .sidenav a:hover {
   background-color: #ddd;
 }
@@ -32,11 +36,4 @@
 .main-content {
   flex: 1;
   padding: 20px;
-}
-
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
 }
