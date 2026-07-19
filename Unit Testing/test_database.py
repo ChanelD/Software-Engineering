@@ -1,4 +1,4 @@
-import py test
+import pytest
 import psycopg2
 
 def get_connection():
@@ -12,7 +12,7 @@ def test_add_inventory_item():
   cursor = conn.cursor()
 
   cursor.execute("""
-    INSERT INTO Inventory (name, categiry, quantity, low_stock_threshold)
+    INSERT INTO Inventory (name, category, quantity, low_stock_threshold)
     VALUES ('Not a real product', 'Coffee', 50, 10)
     Returning item_id, name, quantity
     """)
@@ -20,7 +20,7 @@ def test_add_inventory_item():
     result = cursor.fetchone()
 
     assert result is not None
-    assert result[1] == 'Test Coffee Beans'
+    assert result[1] == 'Not a real product'
     assert result[2] == 50
 
     conn.rollback()
