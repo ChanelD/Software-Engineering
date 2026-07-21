@@ -1,30 +1,66 @@
-from fastapi import APIRouter
-from routers.sales import sales
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
 
-router = APIRouter(prefix="/alerts", tags=["Alerts"])
+from database import get_db
+from models import Alert
+from schemas import AlertResponse
 
-@router.get("/")
-def get_alerts():
-    alerts = []
 
-    if len(sales) == 0:
-        alerts.append({
-            "type": "No Sales",
-            "message": "No sales have been recorded yet."
-        })
+router = APIRouter(
+    prefix="/alerts",
+    tags=["Alerts"],
+)
 
-    high_value_sales = [sale for sale in sales if sale["total"] >= 500]
 
-    for sale in high_value_sales:
-        alerts.append({
-            "type": "High Value Sale",
-            "message": f"{sale['item_name']} sale was ${sale['total']:.2f}."
-        })
+@router.get("/", response_model=list[AlertResponse])
+def get_alerts(db: Session = Depends(get_db)):
+    return (
+        db.query(Alert)
+        .order_by(Alert.created_at.desc(), Alert.alert_id.desc())
+        .all()
+    )
 
-    if len(sales) >= 5:
-        alerts.append({
-            "type": "Sales Activity",
-            "message": "There has been strong recent sales activity."
-        })
 
-    return alerts
+@router.get("/{alert_id}", response_model=AlertResponse)
+def get_alert(
+    alert_id: int,
+    db: Session = Depends(get_db),
+):
+    alert = (
+        db.query(Alert)
+        .filter(Alert.alert_id == alert_id)
+        .first()
+    )
+
+    if alert is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Alert not found",
+        )
+
+    return alert
+
+
+@router.delete("/{alert_id}")
+def delete_alert(
+    alert_id: int,
+    db: Session = Depends(get_db),
+):
+    alert = (
+        db.query(Alert)
+        .filter(Alert.alert_id == alert_id)
+        .first()
+    )
+
+    if alert is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Alert not found",
+        )
+
+    db.delete(alert)
+    db.commit()
+
+    return {
+        "message": "Alert deleted successfully",
+    }

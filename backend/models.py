@@ -1,6 +1,6 @@
 from datetime import date, datetime
 
-from sqlalchemy import Date, DateTime, ForeignKey, Integer, Numeric, String, Text
+from sqlalchemy import Date, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from database import Base
@@ -16,12 +16,12 @@ class Inventory(Base):
     )
 
     name: Mapped[str] = mapped_column(
-        String(100),
+        String,
         nullable=False,
     )
 
     category: Mapped[str | None] = mapped_column(
-        String(100),
+        String,
         nullable=True,
     )
 
@@ -56,7 +56,7 @@ class Inventory(Base):
 
 
 class Service(Base):
-    __tablename__ = "services"
+    __tablename__ = "service"
 
     service_id: Mapped[int] = mapped_column(
         Integer,
@@ -65,7 +65,7 @@ class Service(Base):
     )
 
     name: Mapped[str] = mapped_column(
-        String(100),
+        String,
         nullable=False,
     )
 
@@ -74,13 +74,13 @@ class Service(Base):
         nullable=True,
     )
 
-    price: Mapped[float] = mapped_column(
-        Numeric(10, 2),
+    price: Mapped[int] = mapped_column(
+        Integer,
         nullable=False,
     )
 
     category: Mapped[str | None] = mapped_column(
-        String(100),
+        String,
         nullable=True,
     )
 
@@ -90,7 +90,7 @@ class Service(Base):
 
 
 class Sale(Base):
-    __tablename__ = "sales"
+    __tablename__ = "sale"
 
     sale_id: Mapped[int] = mapped_column(
         Integer,
@@ -104,53 +104,36 @@ class Sale(Base):
     )
 
     service_id: Mapped[int | None] = mapped_column(
-        ForeignKey("services.service_id"),
+        ForeignKey("service.service_id"),
         nullable=True,
     )
 
-    name: Mapped[str] = mapped_column(
-        String(100),
-        nullable=False,
-    )
-
-    price: Mapped[float] = mapped_column(
-        Numeric(10, 2),
-        nullable=False,
-    )
-
-    category: Mapped[str | None] = mapped_column(
-        String(100),
-        nullable=True,
-    )
-
-    quantity: Mapped[int] = mapped_column(
+    price: Mapped[int] = mapped_column(
         Integer,
         nullable=False,
-        default=1,
     )
 
-    sale_date: Mapped[datetime] = mapped_column(
-        DateTime,
-        nullable=False,
-        default=datetime.utcnow,
-    )
-
-    sale_amount: Mapped[float] = mapped_column(
-        Numeric(10, 2),
+    sale_date: Mapped[date] = mapped_column(
+        Date,
         nullable=False,
     )
 
-    inventory_item: Mapped[Inventory | None] = relationship(
+    sale_amount: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+    )
+
+    inventory_item: Mapped["Inventory | None"] = relationship(
         back_populates="sales"
     )
 
-    service: Mapped[Service | None] = relationship(
+    service: Mapped["Service | None"] = relationship(
         back_populates="sales"
     )
 
 
 class Alert(Base):
-    __tablename__ = "alerts"
+    __tablename__ = "alert"
 
     alert_id: Mapped[int] = mapped_column(
         Integer,
@@ -160,6 +143,11 @@ class Alert(Base):
 
     item_id: Mapped[int] = mapped_column(
         ForeignKey("inventory.item_id"),
+        nullable=False,
+    )
+
+    alert_type: Mapped[str] = mapped_column(
+        String,
         nullable=False,
     )
 
@@ -174,13 +162,13 @@ class Alert(Base):
         default=datetime.utcnow,
     )
 
-    inventory_item: Mapped[Inventory] = relationship(
+    inventory_item: Mapped["Inventory"] = relationship(
         back_populates="alerts"
     )
 
 
 class Purchase(Base):
-    __tablename__ = "purchases"
+    __tablename__ = "purchase"
 
     order_id: Mapped[int] = mapped_column(
         Integer,
@@ -193,14 +181,13 @@ class Purchase(Base):
         nullable=False,
     )
 
-    order_date: Mapped[datetime] = mapped_column(
-        DateTime,
+    order_date: Mapped[date] = mapped_column(
+        Date,
         nullable=False,
-        default=datetime.utcnow,
     )
 
     status: Mapped[str] = mapped_column(
-        String(50),
+        String,
         nullable=False,
         default="pending",
     )
@@ -210,6 +197,6 @@ class Purchase(Base):
         nullable=False,
     )
 
-    inventory_item: Mapped[Inventory] = relationship(
+    inventory_item: Mapped["Inventory"] = relationship(
         back_populates="purchases"
     )
