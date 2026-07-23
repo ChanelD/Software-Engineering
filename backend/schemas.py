@@ -3,10 +3,6 @@ from datetime import date, datetime
 from pydantic import BaseModel, ConfigDict, Field
 
 
-# ==========================
-# Services
-# ==========================
-
 class ServiceCreate(BaseModel):
     name: str = Field(min_length=1, max_length=100)
     description: str | None = None
@@ -31,10 +27,6 @@ class ServiceResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# ==========================
-# Sales
-# ==========================
-
 class SaleCreate(BaseModel):
     item_id: int | None = None
     service_id: int | None = None
@@ -54,10 +46,6 @@ class SaleResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# ==========================
-# Alerts
-# ==========================
-
 class AlertResponse(BaseModel):
     alert_id: int
     item_id: int
@@ -67,10 +55,6 @@ class AlertResponse(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-
-# ==========================
-# Dashboard
-# ==========================
 
 class DashboardResponse(BaseModel):
     total_inventory_items: int
@@ -86,3 +70,35 @@ class DashboardResponse(BaseModel):
     average_sale: float
 
     recent_sales: list[SaleResponse]
+
+
+class InventoryBase(BaseModel):
+    name: str
+    quantity: int = 0
+    category: str | None = None
+    low_stock_threshold: int = 5
+    expiration_date: date | None = None
+
+
+class InventoryCreate(InventoryBase):
+    pass
+
+
+class Inventory(InventoryBase):
+    item_id: int
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class InventoryUpdate(BaseModel):
+    name: str | None = None
+    quantity: int | None = None
+    category: str | None = None
+    low_stock_threshold: int | None = None
+    expiration_date: date | None = None
+
+
+class PurchaseCreate(BaseModel):
+    item_id: int
+    quantity_bought: int
+    timestamp: datetime | None = None
