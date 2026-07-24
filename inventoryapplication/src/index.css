@@ -1,0 +1,12 @@
+:root {
+  --color-espresso: #3C2415;   /* dark backgrounds, headers */
+  --color-coffee: #6F4E37;     /* primary accent, buttons */
+  --color-caramel: #C68E4C;    /* secondary accent, hover states */
+  --color-cream: #F5E6CA;      /* card backgrounds */
+  --color-milk-foam: #FFF8F0;  /* page background */
+}
+
+body {
+  background-color: var(--color-milk-foam);
+  color: var(--color-espresso);
+}
