@@ -1,16 +1,33 @@
-import { inventoryRecords } from "../Data/inventoryData";
+import { useEffect, useState } from "react";
 import { isExpired, isNearExpiration } from "../Utilities/expirationHelpers";
+import API_BASE from "../api";
 import "./ExpirationCard.css";
 
 function ExpirationCard() {
-  // only keep items expired or near expiration
-  const nearOrExpiredItems = inventoryRecords.filter((item) =>
-    isNearExpiration(item.expiration)
+  const [inventoryItems, setInventoryItems] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const res = await fetch(`${API_BASE}/inventory/`);
+        if (!res.ok) throw new Error('bad');
+        const data = await res.json();
+        if (mounted) setInventoryItems(data || []);
+      } catch (e) {
+        console.error('ExpirationCard fetch error', e);
+        if (mounted) setInventoryItems([]);
+      }
+    })();
+    return () => (mounted = false);
+  }, []);
+
+  const nearOrExpiredItems = inventoryItems.filter((item) =>
+    item.expiration_date ? isNearExpiration(item.expiration_date) : false
   );
 
-  // sort so near expire or expired shows first
   const sortedItems = [...nearOrExpiredItems].sort(
-    (a, b) => new Date(a.expiration) - new Date(b.expiration)
+    (a, b) => new Date(a.expiration_date) - new Date(b.expiration_date)
   );
 
   return (
@@ -22,15 +39,15 @@ function ExpirationCard() {
         ) : (
           sortedItems.map((item) => (
             <div
-              key={item.id}
-              className={`expiration-card ${isExpired(item.expiration) ? "expired" : "expiring-soon"}`}
+              key={item.item_id}
+              className={`expiration-card ${isExpired(item.expiration_date) ? "expired" : "expiring-soon"}`}
             >
               <h4>{item.name}</h4>
               <p>{item.category}</p>
               <p>Qty: {item.quantity}</p>
-              <p>{item.expiration}</p>
+              <p>{item.expiration_date}</p>
               <span className="expiring-icon">
-                {isExpired(item.expiration) ? "🧀❗" : "🥛⚠️"}
+                {isExpired(item.expiration_date) ? "🧀❗" : "🥛⚠️"}
               </span>
             </div>
           ))

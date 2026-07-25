@@ -102,3 +102,20 @@ class PurchaseCreate(BaseModel):
     item_id: int
     quantity_bought: int
     timestamp: datetime | None = None
+
+
+class PurchaseOrderCreate(BaseModel):
+    item_id: int
+    order_date: date
+    status: str = "pending"
+    quantity: int
+
+
+class PurchaseOrderResponse(BaseModel):
+    order_id: int
+    item_id: int
+    order_date: date
+    status: str
+    quantity: int
+
+    model_config = ConfigDict(from_attributes=True)

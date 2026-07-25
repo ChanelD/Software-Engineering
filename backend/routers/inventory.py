@@ -49,3 +49,15 @@ def update_item(item_id: int, item_update: schemas.InventoryUpdate, db: Session 
     db.commit()
     db.refresh(item)
     return item
+
+
+@router.delete("/{item_id}")
+def delete_item(item_id: int, db: Session = Depends(get_db)):
+    item = db.query(Inventory).filter(Inventory.item_id == item_id).first()
+    if item is None:
+        raise HTTPException(status_code=404, detail="Item not found")
+    
+    db.delete(item)
+    db.commit()
+    
+    return {"message": "Item deleted successfully"}

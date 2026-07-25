@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchJSON } from "../api";
+import API_BASE from "../api";
 import "./ExpirationTracking.css";
 
 function ExpirationTracking() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState([]);
 
-  // Sample data 
-  const [items] = useState([
-    { id: "INV001", category: "Dairy", name: "Milk", quantity: 24, expiration: "2026-01-20" },
-    { id: "INV002", category: "Produce", name: "Bananas", quantity: 50, expiration: "2026-07-15" },
-    { id: "INV003", category: "Bakery", name: "Bread", quantity: 15, expiration: "2026-07-18" },
-    { id: "INV004", category: "Meat", name: "Chicken Breast", quantity: 30, expiration: "2026-07-16" },
-    { id: "INV005", category: "Beverages", name: "Orange Juice", quantity: 40, expiration: "2026-08-01" },
-  ]);
+  useEffect(() => {
+    let mounted = true;
+    fetchJSON("/expiration/").then((data) => {
+      if (mounted) setItems(data || []);
+    });
+    return () => (mounted = false);
+  }, []);
 
   // Checks if an item's expiration date has already passed
   const isExpired = (expirationDate) => {
@@ -29,23 +31,34 @@ function ExpirationTracking() {
     return diffDays <= 14;
   };
 
+  const handleResolve = async (item_id) => {
+    if (!window.confirm("Resolve this expiration?")) return;
+    try {
+      const res = await fetch(`${API_BASE}/expiration/${item_id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to resolve");
+      setItems((prev) => prev.filter((item) => item.item_id !== item_id));
+    } catch (ex) {
+      alert("Error: " + ex.message);
+    }
+  };
+
   // Search functionality
   const filteredItems = items.filter((item) =>
-    item.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.quantity.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.expiration.toLowerCase().includes(searchTerm.toLowerCase())
+    String(item.item_id || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.category || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    String(item.quantity || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.expiration_date || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Only keep items that are expired or near expiration
   const nearOrExpiredItems = filteredItems.filter((item) =>
-    isNearExpiration(item.expiration)
+    isNearExpiration(item.expiration_date)
   );
 
   // Sorts items so the ones nearest to expiring (or most expired) show up first
   const sortedItems = [...nearOrExpiredItems].sort((a, b) => {
-    return new Date(a.expiration) - new Date(b.expiration);
+    return new Date(a.expiration_date) - new Date(b.expiration_date);
   });
 
   return (
@@ -69,21 +82,26 @@ function ExpirationTracking() {
             <th>Name</th>
             <th>Quantity</th>
             <th>Expiration Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {sortedItems.map((item) => (
             <tr
-              key={item.id}
-              className={isExpired(item.expiration) ? "expired" : "expiring-soon"}
+              key={item.item_id}
+              className={isExpired(item.expiration_date) ? "expired" : "expiring-soon"}
             >
-              <td>{item.id}</td>
+              <td>{item.item_id}</td>
               <td>{item.category}</td>
               <td>{item.name}</td>
               <td>{item.quantity}</td>
               <td>
-                {item.expiration}
-                {isExpired(item.expiration) ? (
+                {item.expiration_date}
+                {item.category === "Coffee" ? (
+                  <span className="expiring-icon" title="Coffee Expiring">
+                    ☕⚠️
+                  </span>
+                ) : isExpired(item.expiration_date) ? (
                   <span className="expiring-icon" title="Expired">
                     🧀❗
                   </span>
@@ -93,6 +111,7 @@ function ExpirationTracking() {
                   </span>
                 )}
               </td>
+              <td><button onClick={() => handleResolve(item.item_id)} className="resolve-btn">Resolve</button></td>
             </tr>
           ))}
         </tbody>

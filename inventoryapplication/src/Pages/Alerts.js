@@ -1,46 +1,51 @@
 import coffeeBeanIcon from "../Assets/coffee-bean.png";
 import coffeeBeansIcon from "../Assets/coffee-beans.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchJSON } from "../api";
+import API_BASE from "../api";
 import "./Alerts.css";
 
 function Alerts() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [items, setItems] = useState([]);
 
-  // Sample data 
-  const [items] = useState([
-    { id: "INV001", category: "Dairy", name: "Milk", quantity: 24 },
-    { id: "INV002", category: "Produce", name: "Bananas", quantity: 50 },
-    { id: "INV003", category: "Bakery", name: "Bread", quantity: 15 },
-    { id: "INV004", category: "Meat", name: "Chicken Breast", quantity: 30 },
-    { id: "INV005", category: "Beverages", name: "Orange Juice", quantity: 40 },
-  ]);
+  useEffect(() => {
+    let mounted = true;
+    fetchJSON("/alerts/").then((data) => {
+      if (mounted) setItems(data || []);
+    });
+    return () => (mounted = false);
+  }, []);
 
-  // Checks if an item's quantity is below the low threshold (under 20)
-  const isLow = (item, lowThreshold) => {
-    return item.quantity < lowThreshold;
+  // Determine if alert is "low stock" (red) or "expiring" (yellow)
+  const isLow = (alert) => {
+    return alert.alert_type === "low_stock";
   };
 
-  // Checks if an item is nearing low stock (under 25, includes already-low items too)
-  const isNearLowStock = (item, nearThreshold) => {
-    return item.quantity < nearThreshold;
+  const handleResolve = async (alert_id) => {
+    if (!window.confirm("Resolve this alert?")) return;
+    try {
+      const res = await fetch(`${API_BASE}/alerts/${alert_id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to resolve");
+      setItems((prev) => prev.filter((item) => item.alert_id !== alert_id));
+    } catch (ex) {
+      alert("Error: " + ex.message);
+    }
   };
 
   // Search functionality
   const filteredItems = items.filter((item) =>
-    item.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.quantity.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    String(item.alert_id || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    String(item.item_id || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.alert_type || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.alert_message || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Only keep items that are low or nearing low stock
-  const lowStockItems = filteredItems.filter((item) =>
-    isNearLowStock(item, 25) // 25 is the "nearing low" threshold
-  );
-
-  // Sorts items so the ones with the lowest quantities show up first
-  const sortedItems = [...lowStockItems].sort((a, b) => {
-    return a.quantity - b.quantity;
+  // Sort by most critical (low_stock) first, then by creation date
+  const sortedItems = [...filteredItems].sort((a, b) => {
+    if (a.alert_type === "low_stock" && b.alert_type !== "low_stock") return -1;
+    if (a.alert_type !== "low_stock" && b.alert_type === "low_stock") return 1;
+    return new Date(b.created_at) - new Date(a.created_at);
   });
 
   return (
@@ -56,27 +61,28 @@ function Alerts() {
         />
       </div>
 
-      <table className="inventory-table">
+      <table className="alerts-table">
         <thead>
           <tr>
+            <th>Alert ID</th>
             <th>Item ID</th>
-            <th>Category</th>
-            <th>Name</th>
-            <th>Quantity</th>
+            <th>Alert Type</th>
+            <th>Message</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {sortedItems.map((item) => (
             <tr
-              key={item.id}
-              className={isLow(item, 20) ? "low-stock" : "near-low-stock"}
+              key={item.alert_id}
+              className={isLow(item) ? "low-stock" : "near-low-stock"}
             >
-              <td>{item.id}</td>
-              <td>{item.category}</td>
-              <td>{item.name}</td>
+              <td>{item.alert_id}</td>
+              <td>{item.item_id}</td>
               <td>
-                {item.quantity}
-                {isLow(item, 20) ? (
+                {item.alert_type === "low_stock" ? "Low Stock" : "Expiring"}
+                {item.alert_type === "low_stock" ? (
                   <img
                     src={coffeeBeanIcon}
                     alt="Low Stock"
@@ -86,12 +92,15 @@ function Alerts() {
                 ) : (
                   <img
                     src={coffeeBeansIcon}
-                    alt="Nearing Low Stock"
-                    title="Nearing Low Stock"
+                    alt="Expiring"
+                    title="Expiring"
                     className="low-icon"
                   />
                 )}
               </td>
+              <td>{item.alert_message}</td>
+              <td className="timestamp-cell">{new Date(item.created_at).toLocaleString()}</td>
+              <td><button onClick={() => handleResolve(item.alert_id)} className="resolve-btn">Resolve</button></td>
             </tr>
           ))}
         </tbody>

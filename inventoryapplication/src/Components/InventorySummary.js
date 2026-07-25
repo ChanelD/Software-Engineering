@@ -1,19 +1,26 @@
-import { inventoryRecords } from "../Data/inventoryData";
-import "./InventorySummary.js";
+import { useEffect, useState } from "react";
+import "./InventorySummary.css";
+import { fetchJSON } from "../api";
 
 function InventorySummary() {
-  // total number of different items (just count the array length)
-  const totalItems = inventoryRecords.length;
+  const [inventoryItems, setInventoryItems] = useState([]);
 
-  // total quantity across all items
+  useEffect(() => {
+    let mounted = true;
+    fetchJSON("/inventory/").then((data) => {
+      if (mounted) setInventoryItems(data || []);
+    });
+    return () => (mounted = false);
+  }, []);
+
+  const totalItems = inventoryItems.length;
   let totalQuantity = 0;
-  for (let i = 0; i < inventoryRecords.length; i++) {
-    totalQuantity += inventoryRecords[i].quantity;
+  for (let i = 0; i < inventoryItems.length; i++) {
+    totalQuantity += inventoryItems[i].quantity || 0;
   }
 
-  // reuse the same filter logic from LowStockCard.js
-  const lowStockItems = inventoryRecords.filter(
-    (item) => item.quantity <= item.reorderLevel
+  const lowStockItems = inventoryItems.filter(
+    (item) => item.quantity <= item.low_stock_threshold
   );
 
   return (

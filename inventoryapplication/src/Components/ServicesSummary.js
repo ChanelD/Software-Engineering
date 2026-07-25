@@ -1,25 +1,23 @@
-import { serviceRecords } from "../Data/servicesData";
+import { useEffect, useState } from "react";
 import ServicesHistoryChart from "./ServicesHistoryChart";
 import "./ServicesSummary.css";
+import { fetchJSON } from "../api";
 
 function ServicesSummary() {
-  const totalServices = serviceRecords.length;
+  const [services, setServices] = useState([]);
 
-  // count how many unique categories exist
-  const uniqueCategories = [];
-  for (let i = 0; i < serviceRecords.length; i++) {
-    const category = serviceRecords[i].category;
-    if (!uniqueCategories.includes(category)) {
-      uniqueCategories.push(category);
-    }
-  }
+  useEffect(() => {
+    let mounted = true;
+    fetchJSON("/services/").then((data) => {
+      if (mounted) setServices(data || []);
+    });
+    return () => (mounted = false);
+  }, []);
 
-  // find the average price across all services
-  let totalPrice = 0;
-  for (let i = 0; i < serviceRecords.length; i++) {
-    totalPrice += serviceRecords[i].price;
-  }
-  const averagePrice = totalPrice / serviceRecords.length;
+  const totalServices = services.length;
+  const uniqueCategories = [...new Set(services.map((service) => service.category).filter(Boolean))];
+  const totalPrice = services.reduce((sum, service) => sum + (service.price || 0), 0);
+  const averagePrice = totalServices ? totalPrice / totalServices : 0;
 
   return (
     <div className="dashboard-widget">

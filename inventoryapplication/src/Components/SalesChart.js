@@ -19,7 +19,7 @@ export default function SalesChart() {
   useEffect(() => {
     async function fetchSalesData() {
       try {
-        const response = await fetch('/api/sales');
+        const response = await fetch('http://127.0.0.1:8000/sales/');
 
         if (!response.ok) {
           throw new Error('API not ready');
