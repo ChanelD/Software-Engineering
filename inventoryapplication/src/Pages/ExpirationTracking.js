@@ -97,11 +97,7 @@ function ExpirationTracking() {
               <td>{item.quantity}</td>
               <td>
                 {item.expiration_date}
-                {item.category === "Coffee" ? (
-                  <span className="expiring-icon" title="Coffee Expiring">
-                    ☕⚠️
-                  </span>
-                ) : isExpired(item.expiration_date) ? (
+                {isExpired(item.expiration_date) ? (
                   <span className="expiring-icon" title="Expired">
                     🧀❗
                   </span>
